@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
   template: `
     <section class="hero" id="home">
       <div class="hero-copy">
-        <p class="eyebrow">Sabari Praveen • Frontend Developer</p>
+        <p class="eyebrow">Sabari Praveen / Frontend Developer</p>
         <h1>I design and build portfolio websites that feel polished, fast, and memorable.</h1>
         <p class="hero-text">
           I create modern web experiences with clean structure, responsive behavior, and visual

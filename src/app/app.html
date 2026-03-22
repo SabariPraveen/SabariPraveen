@@ -15,8 +15,6 @@
             class="desktop-link"
             [routerLink]="item.route"
             [fragment]="item.fragment"
-            routerLinkActive="desktop-link-active"
-            [routerLinkActiveOptions]="{ exact: item.route === '/contact' || item.fragment === undefined }"
             (click)="closeMenu()"
           >
             {{ item.label }}
@@ -80,4 +78,24 @@
   <main>
     <router-outlet />
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-topline">
+      <p>Sabari Praveen</p>
+      <span>Building portfolio websites with stronger hierarchy, cleaner UX, and more professional presentation.</span>
+    </div>
+
+    <div class="footer-links">
+      <a routerLink="/">Home</a>
+      <a routerLink="/" fragment="about">About</a>
+      <a routerLink="/" fragment="services">Services</a>
+      <a routerLink="/" fragment="work">Work</a>
+      <a routerLink="/contact">Contact</a>
+    </div>
+
+    <div class="footer-bottom">
+      <span>Designed and developed for a polished personal brand experience.</span>
+      <span>ar.sabaripraveen@gmail.com</span>
+    </div>
+  </footer>
 </div>
