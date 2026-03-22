@@ -9,10 +9,10 @@ import { RouterLink } from '@angular/router';
     <section class="hero" id="home">
       <div class="hero-copy">
         <p class="eyebrow">Sabari Praveen / Frontend Developer</p>
-        <h1>I design and build portfolio websites that feel polished, fast, and memorable.</h1>
+        <h1>I design portfolio websites that look premium and feel clear from the first scroll.</h1>
         <p class="hero-text">
-          I create modern web experiences with clean structure, responsive behavior, and visual
-          confidence. The goal is simple: help people trust your work within the first few seconds.
+          I build presentation-focused websites with stronger hierarchy, sharper storytelling, and
+          polished responsive behavior so your work feels more credible across desktop, tablet, and mobile.
         </p>
 
         <div class="hero-actions">
@@ -33,14 +33,23 @@ import { RouterLink } from '@angular/router';
       <aside class="hero-showcase">
         <div class="showcase-panel showcase-feature">
           <div class="showcase-kicker">
-            <span>Selected Focus</span>
+            <span>Design Direction</span>
             <span>2026</span>
           </div>
-          <h2>Professional portfolio systems with strong navigation, brand clarity, and smooth interaction.</h2>
+          <h2>Editorial layouts, confident navigation, and content sections that actually guide attention.</h2>
           <p>
-            I focus on the details that make a portfolio feel intentional: hierarchy, spacing,
-            motion, content flow, and responsive layout decisions that still look sharp on mobile.
+            Instead of generic blocks stacked one after another, I shape sections with stronger rhythm,
+            contrast, and visual pacing so the page feels intentional from top to bottom.
           </p>
+
+          <div class="feature-metrics">
+            @for (item of featureMetrics; track item.label) {
+              <article>
+                <strong>{{ item.value }}</strong>
+                <span>{{ item.label }}</span>
+              </article>
+            }
+          </div>
         </div>
 
         <div class="showcase-grid">
@@ -55,20 +64,28 @@ import { RouterLink } from '@angular/router';
       </aside>
     </section>
 
-    <section class="section-block section-intro" id="about">
+    <section class="section-block section-story" id="about">
       <div class="section-heading">
         <p>About</p>
-        <h2>I blend visual polish with practical frontend execution.</h2>
+        <h2>Designing the content is just as important as designing the interface.</h2>
       </div>
 
       <div class="about-layout">
         <article class="content-card content-card-large">
           <p class="body-copy">
-            I care about websites that do more than look good in screenshots. They should load
-            cleanly, read clearly, and guide visitors toward the next action without friction.
-            Whether the goal is a personal portfolio, a product showcase, or a service-led landing
-            page, I aim for interfaces that feel premium without becoming noisy.
+            A portfolio should not feel like a collection of random sections. It needs a story:
+            who you are, what kind of work you do, why your approach is valuable, and what someone
+            should do next. I focus on that flow so the design supports the message instead of distracting from it.
           </p>
+
+          <div class="insight-grid">
+            @for (item of insights; track item.title) {
+              <article class="insight-card">
+                <strong>{{ item.title }}</strong>
+                <p>{{ item.text }}</p>
+              </article>
+            }
+          </div>
         </article>
 
         <article class="content-card stack-card">
@@ -77,6 +94,12 @@ import { RouterLink } from '@angular/router';
             @for (item of stack; track item) {
               <span>{{ item }}</span>
             }
+          </div>
+
+          <div class="profile-card">
+            <span class="profile-label">Working style</span>
+            <h3>Calm, structured, and detail-driven.</h3>
+            <p>I care about how the site reads, how it moves, and how it feels once real content is added.</p>
           </div>
         </article>
       </div>
@@ -91,9 +114,17 @@ import { RouterLink } from '@angular/router';
       <div class="services-grid">
         @for (service of services; track service.title) {
           <article class="service-card">
-            <span class="service-index">0{{ $index + 1 }}</span>
+            <div class="service-topline">
+              <span class="service-index">0{{ $index + 1 }}</span>
+              <span>{{ service.kicker }}</span>
+            </div>
             <h3>{{ service.title }}</h3>
             <p>{{ service.description }}</p>
+            <div class="mini-list">
+              @for (point of service.points; track point) {
+                <span>{{ point }}</span>
+              }
+            </div>
           </article>
         }
       </div>
@@ -102,12 +133,21 @@ import { RouterLink } from '@angular/router';
     <section class="section-block" id="work">
       <div class="section-heading">
         <p>Selected Work</p>
-        <h2>Portfolio directions built to feel distinct and client-ready.</h2>
+        <h2>Designed as complete presentation systems, not isolated sections.</h2>
       </div>
 
       <div class="projects-grid">
         @for (project of projects; track project.title) {
           <article class="project-card">
+            <div class="project-visual" [style.--project-tone]="project.tone">
+              <div class="project-badge">{{ project.type }}</div>
+              <div class="project-window">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+
             <div class="project-topline">
               <span>{{ project.type }}</span>
               <span>{{ project.year }}</span>
@@ -127,7 +167,7 @@ import { RouterLink } from '@angular/router';
     <section class="section-block process-block" id="process">
       <div class="section-heading">
         <p>Process</p>
-        <h2>A simple flow that keeps design, content, and development aligned.</h2>
+        <h2>A clear flow that turns rough ideas into polished portfolio experiences.</h2>
       </div>
 
       <div class="process-grid">
@@ -141,10 +181,10 @@ import { RouterLink } from '@angular/router';
       </div>
     </section>
 
-    <section class="section-block">
+    <section class="section-block section-proof">
       <div class="section-heading">
         <p>Testimonials</p>
-        <h2>How the work should feel to clients and collaborators.</h2>
+        <h2>Content and layout should work together to build trust naturally.</h2>
       </div>
 
       <div class="testimonials-grid">
@@ -163,7 +203,7 @@ import { RouterLink } from '@angular/router';
     <section class="cta-banner">
       <div>
         <p>Ready to build</p>
-        <h2>Let&apos;s create a portfolio that looks credible, modern, and unmistakably yours.</h2>
+        <h2>Let&apos;s create a portfolio that feels more intentional, more modern, and more you.</h2>
       </div>
       <a routerLink="/contact" class="primary-btn">Contact Me</a>
     </section>
@@ -176,16 +216,33 @@ export class HomePageComponent {
     { value: 'Focused', title: 'Clear user paths and stronger conversion' }
   ];
 
+  protected readonly featureMetrics = [
+    { value: '01', label: 'Narrative-led sections' },
+    { value: '02', label: 'Visual rhythm across the page' },
+    { value: '03', label: 'Professional polish in the details' }
+  ];
+
   protected readonly showcaseCards = [
     {
       label: 'Navigation',
-      title: 'Editorial menus with confident hierarchy',
-      text: 'Structured links, clear calls to action, and mobile drawers designed with the same care as desktop.'
+      title: 'Menus with clear hierarchy',
+      text: 'Brand, primary links, and call to action all stay readable without looking like a stock template.'
     },
     {
-      label: 'Presentation',
-      title: 'Project storytelling that feels credible',
-      text: 'Case-study sections, supporting details, and content rhythm that make work easier to scan and trust.'
+      label: 'Content',
+      title: 'Sections with stronger presentation',
+      text: 'Project cards, story blocks, and service areas are shaped to keep the page visually alive.'
+    }
+  ];
+
+  protected readonly insights = [
+    {
+      title: 'Content-first thinking',
+      text: 'The layout is designed around the message, not the other way around.'
+    },
+    {
+      title: 'Visual hierarchy',
+      text: 'Contrast, spacing, and scale are used to guide the eye section by section.'
     }
   ];
 
@@ -200,16 +257,22 @@ export class HomePageComponent {
 
   protected readonly services = [
     {
+      kicker: 'Brand Presence',
       title: 'Portfolio Website Design',
-      description: 'Distinct layouts, stronger content hierarchy, and a visual tone that feels more professional than template-driven.'
+      description: 'Distinct layouts, stronger hierarchy, and a visual tone that feels more professional than template-driven.',
+      points: ['Homepage direction', 'Section design', 'Visual identity']
     },
     {
+      kicker: 'Build Quality',
       title: 'Frontend Development',
-      description: 'Responsive implementation with reusable structure, smooth behavior, and attention to polish across breakpoints.'
+      description: 'Responsive implementation with reusable structure, smooth behavior, and attention to polish across breakpoints.',
+      points: ['Angular build', 'Responsive logic', 'Interaction details']
     },
     {
+      kicker: 'Clarity',
       title: 'Content-Led UX Refinement',
-      description: 'Sharper messaging, clearer section flow, and calls to action that help visitors understand your value quickly.'
+      description: 'Sharper messaging, better pacing, and calls to action that help visitors understand your value faster.',
+      points: ['Section flow', 'Messaging cleanup', 'Stronger conversion']
     }
   ];
 
@@ -219,51 +282,54 @@ export class HomePageComponent {
       year: '2026',
       title: 'Creative Developer Portfolio',
       description: 'A warm editorial layout that balances credibility with personality for a solo designer-developer.',
-      tags: ['Brand System', 'Responsive Design', 'Motion Thinking']
+      tags: ['Brand System', 'Responsive Design', 'Motion Thinking'],
+      tone: 'linear-gradient(135deg, #f6d7bf, #d8b08d)'
     },
     {
       type: 'Studio Landing Page',
       year: '2026',
       title: 'Service-Led Agency Presence',
       description: 'A conversion-focused homepage built around trust, expertise, and well-structured service storytelling.',
-      tags: ['Service Pages', 'Lead Generation', 'UI Direction']
+      tags: ['Service Pages', 'Lead Generation', 'UI Direction'],
+      tone: 'linear-gradient(135deg, #d8d5cb, #b6aea1)'
     },
     {
       type: 'Case Study System',
       year: '2026',
       title: 'Project Archive Experience',
       description: 'A modular portfolio format for showcasing process, outcomes, and technical decisions without clutter.',
-      tags: ['Case Studies', 'Content Strategy', 'Frontend Build']
+      tags: ['Case Studies', 'Content Strategy', 'Frontend Build'],
+      tone: 'linear-gradient(135deg, #edd8cf, #d4c0b7)'
     }
   ];
 
   protected readonly process = [
     {
       title: 'Clarify the positioning',
-      description: 'We define the role, audience, and first impression the portfolio needs to communicate.'
+      description: 'We define the audience, tone, and first impression the portfolio needs to communicate.'
     },
     {
-      title: 'Shape the structure',
-      description: 'Sections, navigation, and key content are organized to feel clear and easy to navigate.'
+      title: 'Shape the content system',
+      description: 'The sections, story flow, and conversion points are organized before details are polished.'
     },
     {
-      title: 'Craft the visual language',
-      description: 'Typography, spacing, color, and layout are refined into a more distinctive interface.'
+      title: 'Design the experience',
+      description: 'Typography, layout, cards, and visual contrast are crafted into a stronger presentation.'
     },
     {
-      title: 'Polish for delivery',
-      description: 'Responsive behavior, interaction details, and contact flow are tightened before launch.'
+      title: 'Refine the delivery',
+      description: 'Responsive behavior, finishing details, and contact flow are tightened for launch.'
     }
   ];
 
   protected readonly testimonials = [
     {
-      quote: 'The site felt clearer and more mature immediately. The design choices looked deliberate, not copied from a template.',
+      quote: 'The layout immediately felt more intentional. It looked like a real brand presence instead of a starter portfolio.',
       name: 'Sample Client',
       role: 'Founder, Personal Brand Project'
     },
     {
-      quote: 'What stood out most was the balance between visual style and practical structure. Everything felt easier to trust.',
+      quote: 'What changed most was the way the content was presented. The site started telling a clearer story without feeling busy.',
       name: 'Sample Collaborator',
       role: 'Creative Partner'
     }
